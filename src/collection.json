@@ -1,0 +1,12 @@
+{
+	"$schema": "http://json-schema.org/schema",
+	"extends": ["@schematics/angular"],
+	"schematics": {
+		"forms": {
+			"description": "An schematic to create forms view",
+			"factory": "../dist/forms/index#forms",
+			"schema": "./schema.json",
+			"aliases": ["f"]
+		}
+	}
+}

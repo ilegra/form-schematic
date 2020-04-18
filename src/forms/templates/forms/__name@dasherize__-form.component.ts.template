@@ -1,0 +1,28 @@
+import { Component, OnInit } from '@angular/core';
+import {
+  FormBuilder,
+  FormGroup
+} from '@angular/forms';
+
+@Component({
+  selector: '<%= prefix %>-<%= dasherize(name) %>-form',
+  templateUrl: './<%= dasherize(name) %>-form.component.html',
+  styleUrls: ['./<%= dasherize(name) %>-form.component.<%= style %>']<% if(!!viewEncapsulation) { %>,
+  encapsulation: ViewEncapsulation.<%= viewEncapsulation %><% } if (changeDetection !== 'Default') { %>,
+  changeDetection: ChangeDetectionStrategy.<%= changeDetection %><% } %>
+})
+export class <%= classify(name) %>FormComponent implements OnInit {
+  public <%= camelize(name) %>Form: FormGroup;
+
+  constructor(private fb: FormBuilder) { }
+
+  ngOnInit() {
+     this.<%= camelize(name) %>Form = this.initializeForm();
+  }
+
+  initializeForm() {
+     return this.fb.group({
+       
+     })
+  }
+}

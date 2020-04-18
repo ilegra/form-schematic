@@ -1,0 +1,27 @@
+{
+	"name": "forms",
+	"version": "0.0.0",
+	"description": "A blank schematics",
+	"scripts": {
+		"build": "rm -Rf ./dist && tsc -p tsconfig.json && cp -r src/forms/templates dist/forms/templates",
+		"test": "npm run build && jasmine src/**/*_spec.js"
+	},
+	"keywords": [
+		"schematics"
+	],
+	"author": "adrianlemess",
+	"license": "MIT",
+	"schematics": "./src/collection.json",
+	"dependencies": {
+		"@angular-devkit/core": "^9.0.1",
+		"@angular-devkit/schematics": "^9.0.1",
+		"typescript": "~3.7.4"
+	},
+	"devDependencies": {
+		"@angular/cli": "^9.1.1",
+		"@schematics/angular": "^9.1.1",
+		"@types/jasmine": "~3.5.0",
+		"@types/node": "^12.11.1",
+		"jasmine": "^3.5.0"
+	}
+}

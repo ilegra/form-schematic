@@ -1,0 +1,55 @@
+{
+	"$schema": "http://json-schema.org/draft-04/schema",
+	"id": "forms",
+	"type": "object",
+	"properties": {
+		"path": {
+			"description": "The path to create the module.",
+			"type": "string",
+			"format": "path",
+			"visible": false
+		},
+		"project": {
+			"type": "string",
+			"description": "The name of the project.",
+			"$default": {
+				"$source": "projectName"
+			}
+		},
+		"style": {
+			"description": "The file extension to be used for style files.",
+			"type": "string",
+			"default": "scss"
+		},
+		"viewEncapsulation": {
+			"description": "Specifies the view encapsulation strategy.",
+			"enum": ["Emulated", "None"],
+			"type": "string",
+			"alias": "v"
+		},
+		"prefix": {
+			"type": "string",
+			"format": "html-selector",
+			"default": "app",
+			"description": "The prefix to apply to generated selectors.",
+			"alias": "p"
+		},
+		"changeDetection": {
+			"description": "Specifies the change detection strategy.",
+			"enum": ["Default", "OnPush"],
+			"type": "string",
+			"default": "Default",
+			"alias": "c"
+		},
+		"name": {
+			"type": "string",
+			"description": "Custom module name",
+			"$default": {
+				"$source": "argv",
+				"index": 0
+			},
+			"x-prompt": "What name would you like to use for the module?"
+		}
+	},
+	"required": ["name"]
+}

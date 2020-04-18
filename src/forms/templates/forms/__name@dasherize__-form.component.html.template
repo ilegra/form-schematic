@@ -1,0 +1,5 @@
+<app-section title="<%= formJsonObj.title %>">
+    <form class="form" [formGroup]="this.<%= camelize(name) %>Form">
+
+    </form>
+</app-section>
