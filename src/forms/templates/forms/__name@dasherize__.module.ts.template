@@ -6,5 +6,6 @@ import { <%= classify(name) %>FormComponent } from './<%= name %>-form.component
 @NgModule({
   imports: [CommonModule],
   declarations: [<%= classify(name) %>FormComponent],
+  exports: [<%= classify(name) %>FormComponent]
 })
 export class <%= classify(name) %>Module {}
