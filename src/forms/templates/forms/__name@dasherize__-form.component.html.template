@@ -16,7 +16,7 @@
 			<% } %>
 		</div>
 		<div class="row">
-			<div class="col-6">
+			<div class="col-6 d-flex justify-content-start w-25 p-3">
 				<button
 					type="button"
 					[disabled]="!this.<%= camelize(name) %>Form.touched"
@@ -26,7 +26,7 @@
 					Cleanup form
 				</button>
 			</div>
-			<div class="col-6">
+			<div class="col-6 d-flex justify-content-end w-25 p-3">
 				<button
 					type="submit"
 					[disabled]="!this.<%= camelize(name) %>Form.status"
