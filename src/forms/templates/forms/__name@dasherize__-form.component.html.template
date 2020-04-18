@@ -1,41 +1,48 @@
 <app-section title="<%= formJsonObj.title %>">
-	<form class="form" [formGroup]="this.<%= camelize(name) %>Form">
-		<div class="row">
-			<% for(let prop of formJsonObj.properties) { %>
-			<div class="col-6">
-				<app-custom-input label="<%= prop.label %>">
-					<input
-						formControlName="<%= prop.key %>"
-						type="<%= prop.inputType %>"
-						class="form-control"
-						id="<%= dasherize('input-' + prop.key) %>"
-						appInputRef
-					/>
-				</app-custom-input>
-			</div>
-			<% } %>
-		</div>
-		<div class="row">
-			<div class="col-6 d-flex justify-content-start w-25 p-3">
-				<button
-					type="button"
-					[disabled]="!this.<%= camelize(name) %>Form.touched"
-					(click)="onReset()"
-					class="btn btn-danger"
-				>
-					Cleanup form
-				</button>
-			</div>
-			<div class="col-6 d-flex justify-content-end w-25 p-3">
-				<button
-					type="submit"
-					[disabled]="!this.<%= camelize(name) %>Form.status"
-					(click)="onSubmit()"
-					class="btn btn-primary"
-				>
-					Submit
-				</button>
-			</div>
-		</div>
-	</form>
+  <form
+    class="form"
+    [formGroup]="this.<%= camelize(name) %>Form"
+    name="<%= dasherize(name + 'Form') %>"
+  >
+    <div class="row">
+      <% for(let prop of formJsonObj.properties) { %>
+      <div class="col-6">
+        <app-custom-input label="<%= prop.label %>">
+          <input
+            formControlName="<%= prop.key %>"
+            name="<%= dasherize(prop.key) %>"
+            type="<%= prop.inputType %>"
+            class="form-control"
+            id="<%= dasherize('input-' + prop.key) %>"
+            appInputRef
+          />
+        </app-custom-input>
+      </div>
+      <% } %>
+    </div>
+    <div class="row">
+      <div class="col-6 d-flex justify-content-start w-25 p-3">
+        <button
+          type="reset"
+          [disabled]="!this.<%= camelize(name) %>Form.touched"
+          (click)="onReset()"
+          class="btn btn-danger"
+          name="reset"
+        >
+          Cleanup form
+        </button>
+      </div>
+      <div class="col-6 d-flex justify-content-end w-25 p-3">
+        <button
+          type="submit"
+          [disabled]="!this.<%= camelize(name) %>Form.status"
+          (click)="onSubmit()"
+          name="submit"
+          class="btn btn-primary"
+        >
+          Submit
+        </button>
+      </div>
+    </div>
+  </form>
 </app-section>
