@@ -5,6 +5,8 @@ export interface InputTypeInterface {
 	pattern?: string;
 	maxLength?: number;
 	minLength?: number;
+	max?: number;
+	min?: number;
 	inputType?: string;
 }
 
@@ -20,6 +22,8 @@ export class InputType {
 	public pattern?: string;
 	public maxLength?: number;
 	public minLength?: number;
+	public max?: number;
+	public min?: number;
 	public inputType?: string;
 
 	constructor(data: InputTypeInterface) {
@@ -29,6 +33,8 @@ export class InputType {
 		this.pattern = data.pattern;
 		this.maxLength = data.maxLength;
 		this.minLength = data.minLength;
+		this.max = data.max;
+		this.min = data.min;
 		this.inputType = data.inputType || this.getTypeInput(this.type);
 	}
 
