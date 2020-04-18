@@ -21,8 +21,15 @@ export class <%= classify(name) %>FormComponent implements OnInit {
   }
 
   initializeForm() {
-     return this.fb.group({
-       
+     return this.fb.group({<% for(let prop of formJsonObj.properties) { %>
+       <%= prop.key %>: [null], <% } %>
      })
+  }
+
+  onSubmit() {
+    const formValue: any = this.<%= camelize(name) %>Form.value;
+    console.log(formValue);
+    alert('form submitted');
+    alert(JSON.stringify(formValue));
   }
 }

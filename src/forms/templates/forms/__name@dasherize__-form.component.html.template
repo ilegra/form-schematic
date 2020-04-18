@@ -1,5 +1,12 @@
 <app-section title="<%= formJsonObj.title %>">
     <form class="form" [formGroup]="this.<%= camelize(name) %>Form">
+        <% for(let prop of formJsonObj.properties) { %>
 
+        <p><%= JSON.stringify(prop) %></p>
+
+        <% } %>
+        <button type="submit" [disabled]="!this.<%= camelize(name) %>Form.status" (click)="onSubmit()" class="btn btn-primary">
+            Submit
+        </button>
     </form>
 </app-section>
