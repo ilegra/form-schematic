@@ -1,4 +1,5 @@
 import { basename, dirname, normalize, Path } from '@angular-devkit/core';
+import { dasherize } from '@angular-devkit/core/src/utils/strings';
 
 export const parseName = (
 	path: string,
@@ -8,7 +9,7 @@ export const parseName = (
 	const namePath = dirname((path + '/' + name) as Path);
 
 	return {
-		name: nameWithoutPath,
+		name: dasherize(nameWithoutPath),
 		path: normalize('/' + namePath)
 	};
 };

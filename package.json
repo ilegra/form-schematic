@@ -18,6 +18,7 @@
 		"typescript": "~3.7.4"
 	},
 	"devDependencies": {
+		"@angular/cdk": "^9.2.1",
 		"@angular/cli": "^9.1.1",
 		"@schematics/angular": "^9.1.1",
 		"@types/jasmine": "~3.5.0",

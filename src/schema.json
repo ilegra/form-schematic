@@ -41,6 +41,17 @@
 			"default": "Default",
 			"alias": "c"
 		},
+		"export": {
+			"type": "boolean",
+			"default": false,
+			"description": "Specifies if declaring module exports the component.",
+			"alias": "e"
+		},
+		"entryComponent": {
+			"type": "boolean",
+			"default": false,
+			"description": "Specifies if the component is an entry component of declaring module."
+		},
 		"name": {
 			"type": "string",
 			"description": "Custom module name",
