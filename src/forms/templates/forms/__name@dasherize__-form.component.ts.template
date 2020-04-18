@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup<% if (formJsonObj.required.length > 0) { %>, Validators <% }%> } from '@angular/forms';
 import { <%= classify(name) %>Interface } from './<%= dasherize(name)%>.model';
 
 @Component({
@@ -20,7 +20,7 @@ export class <%= classify(name) %>FormComponent implements OnInit {
 
   private initializeForm() {
      return this.fb.group({<% for(let prop of formJsonObj.properties) { %>
-       <%= prop.key %>: [null], <% } %>
+       <%= prop.key %>: [null<% if (formJsonObj.required.includes(prop.key)) { %>, [Validators.required] <% } %>], <% } %>
      })
   }
 

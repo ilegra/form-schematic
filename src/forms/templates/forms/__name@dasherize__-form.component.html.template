@@ -35,7 +35,7 @@
       <div class="col-6 d-flex justify-content-end w-25 p-3">
         <button
           type="submit"
-          [disabled]="!this.<%= camelize(name) %>Form.status"
+          [disabled]="!this.<%= camelize(name) %>Form.valid"
           (click)="onSubmit()"
           name="submit"
           class="btn btn-primary"
