@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  FormBuilder,
-  FormGroup
-} from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { <%= classify(name) %>Interface } from './<%= dasherize(name)%>.model';
 
 @Component({
   selector: '<%= prefix %>-<%= dasherize(name) %>-form',
@@ -20,16 +18,27 @@ export class <%= classify(name) %>FormComponent implements OnInit {
      this.<%= camelize(name) %>Form = this.initializeForm();
   }
 
-  initializeForm() {
+  private initializeForm() {
      return this.fb.group({<% for(let prop of formJsonObj.properties) { %>
        <%= prop.key %>: [null], <% } %>
      })
   }
 
   onSubmit() {
-    const formValue: any = this.<%= camelize(name) %>Form.value;
-    console.log(formValue);
+    console.log(this.getFormValue());
     alert('form submitted');
-    alert(JSON.stringify(formValue));
+    alert(JSON.stringify(this.getFormValue()));
+  }
+
+  onReset() {
+    this.<%= camelize(name) %>Form.reset();
+  }
+
+  getFormValue(): <%= classify(name) %>Interface {
+    return this.<%= camelize(name) %>Form.value;
+  }
+
+  getFormControlValue(formControlName: string) {
+    return this.<%= camelize(name) %>Form.get(formControlName).value;
   }
 }

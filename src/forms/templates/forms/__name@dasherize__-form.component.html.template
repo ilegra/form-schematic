@@ -1,7 +1,41 @@
 <app-section title="<%= formJsonObj.title %>">
-    <form class="form" [formGroup]="this.<%= camelize(name) %>Form">
-        <button type="submit" [disabled]="!this.<%= camelize(name) %>Form.status" (click)="onSubmit()" class="btn btn-primary">
-            Submit
-        </button>
-    </form>
+	<form class="form" [formGroup]="this.<%= camelize(name) %>Form">
+		<div class="row">
+			<% for(let prop of formJsonObj.properties) { %>
+			<div class="col-6">
+				<app-custom-input label="<%= prop.label %>">
+					<input
+						formControlName="<%= prop.key %>"
+						type="<%= prop.inputType %>"
+						class="form-control"
+						id="<%= dasherize('input-' + prop.key) %>"
+						appInputRef
+					/>
+				</app-custom-input>
+			</div>
+			<% } %>
+		</div>
+		<div class="row">
+			<div class="col-6">
+				<button
+					type="button"
+					[disabled]="!this.<%= camelize(name) %>Form.touched"
+					(click)="onReset()"
+					class="btn btn-danger"
+				>
+					Cleanup form
+				</button>
+			</div>
+			<div class="col-6">
+				<button
+					type="submit"
+					[disabled]="!this.<%= camelize(name) %>Form.status"
+					(click)="onSubmit()"
+					class="btn btn-primary"
+				>
+					Submit
+				</button>
+			</div>
+		</div>
+	</form>
 </app-section>
