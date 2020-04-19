@@ -38,24 +38,16 @@ export function forms(_options: OptionsFormSchema): Rule {
 		// context.logger.warn('Warn message');
 		// context.logger.error('Error message');
 		const workspaceConfig = tree.read('/angular.json');
-		const jsonFormConfig = tree.read('/form.json');
 
 		if (!workspaceConfig) {
 			throw new NotValidAngularWorkspace();
 		}
 
-		if (!jsonFormConfig) {
-			throw new FormJsonNotFoundError();
-		}
-
 		const workspaceContent = workspaceConfig.toString();
-		const jsonFormContent = jsonFormConfig.toString();
 
 		const workspace: workspace.WorkspaceSchema = JSON.parse(
 			workspaceContent
 		);
-
-		const formJsonObj = new FormJson(JSON.parse(jsonFormContent));
 
 		if (!_options.project) {
 			_options.project = workspace.defaultProject || '';
@@ -63,6 +55,16 @@ export function forms(_options: OptionsFormSchema): Rule {
 
 		const projectName = _options.project;
 		const project = workspace.projects[projectName];
+
+		const jsonFormConfig = tree.read(`${_options.config}`);
+
+		if (!jsonFormConfig) {
+			throw new FormJsonNotFoundError();
+		}
+
+		const jsonFormContent = jsonFormConfig.toString();
+
+		const formJsonObj = new FormJson(JSON.parse(jsonFormContent));
 
 		const projectType =
 			project.projectType === 'application'

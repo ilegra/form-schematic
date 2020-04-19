@@ -17,7 +17,8 @@
             maxLength="<%= prop.maxLength %>"<% } %><% if(prop.minLength || prop.minLength === 0) { %> 
             minLength="<%= prop.minLength%>"<% } %><% if(prop.min || prop.min === 0) { %> 
             min="<%= prop.min%>"<% } %><% if(prop.max || prop.max === 0) { %> 
-            max="<%= prop.max%>"<% } %>
+            max="<%= prop.max%>"<% } %><% if(prop.mask) { %> 
+            mask="<%= prop.mask%>"<% } %>
             appInputRef
           />
         </app-custom-input>

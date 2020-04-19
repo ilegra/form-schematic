@@ -8,6 +8,7 @@ export interface InputTypeInterface {
 	max?: number;
 	min?: number;
 	inputType?: string;
+	mask?: string;
 }
 
 const inputTypeMapper: any = {
@@ -24,6 +25,7 @@ export class InputType {
 	public minLength?: number;
 	public max?: number;
 	public min?: number;
+	public mask?: string;
 	public inputType?: string;
 
 	constructor(data: InputTypeInterface) {
@@ -35,6 +37,7 @@ export class InputType {
 		this.minLength = data.minLength;
 		this.max = data.max;
 		this.min = data.min;
+		this.mask = data.mask;
 		this.inputType = data.inputType || this.getTypeInput(this.type);
 	}
 

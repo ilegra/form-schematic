@@ -39,7 +39,7 @@
 			"enum": ["Default", "OnPush"],
 			"type": "string",
 			"default": "Default",
-			"alias": "c"
+			"alias": "cd"
 		},
 		"export": {
 			"type": "boolean",
@@ -52,6 +52,16 @@
 			"default": false,
 			"description": "Specifies if the component is an entry component of declaring module."
 		},
+		"config": {
+			"type": "string",
+			"description": "Config file to the forms",
+			"$default": {
+				"$source": "argv",
+				"index": 1
+			},
+			"alias": "c",
+			"x-prompt": "What the name of the config file?"
+		},
 		"name": {
 			"type": "string",
 			"description": "Custom module name",
@@ -59,8 +69,8 @@
 				"$source": "argv",
 				"index": 0
 			},
-			"x-prompt": "What name would you like to use for the module?"
+			"x-prompt": "What name would you like to use for the forms?"
 		}
 	},
-	"required": ["name"]
+	"required": ["name", "config"]
 }
