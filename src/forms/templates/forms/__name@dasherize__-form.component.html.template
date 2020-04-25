@@ -34,7 +34,7 @@
           class="btn btn-danger"
           name="reset"
         >
-          Cleanup form
+          Limpar formulário
         </button>
       </div>
       <div class="col-6 d-flex justify-content-end w-25 p-3">
