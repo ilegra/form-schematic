@@ -1,0 +1,29 @@
+{
+	"type": "object",
+	"title": "Address",
+	"properties": {
+		"street": {
+			"title": "Street",
+			"type": "string"
+		},
+		"district": {
+			"title": "District",
+			"type": "string",
+			"maxLength": 15
+		},
+		"numberStr": {
+			"title": "Number",
+			"type": "number"
+		},
+		"city": {
+			"title": "City",
+			"type": "string"
+		},
+		"zipCode": {
+			"title": "Zip Code",
+			"type": "string",
+			"mask": "00.000-000"
+		}
+	},
+	"required": ["street", "numberStr", "city", "zipCode"]
+}

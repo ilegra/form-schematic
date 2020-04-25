@@ -1,0 +1,7 @@
+<section class="container">
+    <h1 class="title" *ngIf="title"> {{ title }} </h1>
+    <h3 class="subtitle" *ngIf="subtitle"> {{ subtitle }} </h3>
+    <div class="content">
+        <ng-content></ng-content>
+    </div>
+</section>

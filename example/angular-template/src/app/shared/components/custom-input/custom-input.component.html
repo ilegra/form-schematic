@@ -1,0 +1,24 @@
+<div
+	class="form form-group"
+	[ngClass]="{
+		disabled: isDisabled
+	}"
+>
+	<label class="control-label form__label">
+		{{ label }}
+		<span
+			class="form__optional"
+			*ngIf="!isRequired && !this.input.isDisabled"
+		>
+			*
+		</span>
+	</label>
+	<div [ngClass]="{ 'has-error': isError }">
+		<ng-content></ng-content>
+		<ng-container *ngIf="isError">
+			<div class="bfm-error-message" *ngFor="let msg of errorMessages">
+				<span class="ng-star-inserted"> {{ msg }}</span>
+			</div>
+		</ng-container>
+	</div>
+</div>

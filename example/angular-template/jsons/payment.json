@@ -1,0 +1,22 @@
+{
+	"type": "object",
+	"title": "Informações para pagamento de salário",
+	"properties": {
+		"bankName": {
+			"title": "Bank Name",
+			"type": "string"
+		},
+		"bankAccount": {
+			"title": "Bank Account",
+			"type": "string",
+			"maxLength": 15
+		},
+		"digit": {
+			"title": "Digit",
+			"type": "string",
+			"inputType": "digit",
+			"maxLength": 1
+		}
+	},
+	"required": ["bankName", "bankAccount", "digit", "country"]
+}

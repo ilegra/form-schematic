@@ -1,0 +1,44 @@
+{
+	"type": "object",
+	"title": "Informações Pessoais",
+	"properties": {
+		"name": {
+			"title": "Name",
+			"type": "string",
+			"maxLength": 80
+		},
+		"password": {
+			"title": "Password",
+			"type": "string",
+			"inputType": "password",
+			"minLength": 6
+		},
+		"email": {
+			"title": "Email",
+			"type": "string",
+			"pattern": "^\\S+@\\S+$"
+		},
+		"age": {
+			"title": "Age",
+			"type": "number",
+			"min": 0,
+			"max": 120
+		},
+		"nationality": {
+			"title": "Nationality",
+			"type": "string"
+		},
+		"cpf": {
+			"title": "CPF",
+			"type": "string",
+			"mask": "000.000.000-00"
+		},
+		"phoneNumber": {
+			"title": "Phone Number",
+			"type": "string",
+			"mask": "(00) 00000-0000",
+			"inputType": "tel"
+		}
+	},
+	"required": ["name", "cpf", "password", "email", "age"]
+}
