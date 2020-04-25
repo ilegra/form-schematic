@@ -93,6 +93,16 @@ will stay:
 ## Backlog
 
 -   [x] Support input elements
+-   [x] Support input types
+-   [x] Masks using ngx-masks (zipCode, cpf, phoneNumber, etc)
+-   [x] Created formBuilder
+-   [x] Required validation
+-   [x] Submit and reset actions
+-   [x] Pattern, maxlength, minlength, min and max validations
+-   [x] Showing label
+-   [x] Created interface from formBuilder value
+-   [x] Update module declarations and add ReactiveFormsModule and FormsModule
+-   [ ] Add to npm
 -   [ ] Support multiple UI frameworks - Bootstrap, Material UI, etc
 -   [ ] Option to disable app-section
 -   [ ] Schematic to add app-section
@@ -101,10 +111,21 @@ will stay:
 -   [ ] Support others HTML elements: text-area, select, multi-select, checkbox and date picker
 -   [ ] Generate specs file with tests suite
 -   [ ] Support Karma/Jasmine and Jest
+-   [ ] Add E2E with Cypress
 -   [ ] Support to form array
 -   [ ] Support nested form-group inside form builder
 -   [ ] Add dynamic forms using FormArray
 -   [ ] Create others template with others UI framework to test the generator
+-   [ ] Support translation and add keys on json form to each field
+-   [ ] Add confirmation modal before reset form
+-   [ ] Passing CSS class on json schema to control form-control styles
+-   [ ] Placeholder
+-   [ ] Tooltip information on inputs
+-   [ ] Show error messages
+-   [ ] Fields disable and readonly
+-   [ ] Field with a default value (json form)
+-   [ ] Fill dropdown with options - passing endpoint or array with options
+-   [ ] Add more validations to invalid fields inside the JSON schema
 
 ## Testing
 
