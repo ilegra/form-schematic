@@ -46,19 +46,49 @@ or
 ng g f path/name-component ./jsons/schema.json
 ```
 
-## Options available in CLI
+Options Available:
+
+| Option                    | Type    | Description                                                           | Enums               | Default |
+| ------------------------- | ------- | --------------------------------------------------------------------- | ------------------- | ------- |
+| --name, first argv        | string  | Custom component name. What name would you like to use for the forms? |                     |         |
+| --config, -c, second argv | string  | Config file to the forms. What the name of the config file?           |                     |         |
+| --style                   | string  | The file extension to be used for style files.                        |                     | scss    |
+| --viewEncapsulation, -v   | string  | Specifies the view encapsulation strategy.                            | "Emulated", "None"  |         |
+| --prefix, -p              | string  | The prefix to apply to generated selectors.                           |                     | app     |
+| --changeDetection, -cd    | string  | Specifies the change detection strategy.                              | "Default", "OnPush" | Default |
+| --export, -e              | boolean | Specifies if declaring module exports the component.                  |                     | false   |
+| --entryComponent          | boolean | Specifies if the component is an entry component of declaring module. |                     | false   |
 
 ## How to configure this schematic in another project
 
-npm link ..path
+1. First you should install dependencies and build the schematic form lib
 
-angular.json
-"cli": {
-"analytics": false,
+```
+cd form-generator
+npm install
+npm run build
+```
+
+2. You should install the schematic in your project
+
+```
+npm link ../path-forms/forms-generator
+```
+
+Inside your angular json in "cli" key you should add:
+
+```
 "defaultCollection": "forms"
-}
+```
 
-## Install schematic in Angular project
+will stay:
+
+```
+"cli": {
+    "analytics": false,
+    "defaultCollection": "forms"
+}
+```
 
 ## Backlog
 
@@ -103,4 +133,4 @@ That's it!
 
 ## Licence
 
-MIT
+MIT licence, check [LICENSE.md](LICENSE.md)
