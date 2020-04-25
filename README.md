@@ -166,6 +166,10 @@ npm publish
 
 That's it!
 
+## Contribute
+
+Pickup an item on backlog, create an issue and submit the PR.
+
 ## Licence
 
 MIT licence, check [LICENSE.md](LICENSE.md)
