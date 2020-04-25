@@ -1,5 +1,5 @@
-import { Component, ContentChild, Input, OnInit } from '@angular/core';
-import { InputRefDirective } from './custom-input.directive';
+import { Component, OnInit, Input, ContentChild } from '@angular/core';
+import { InputRefDirective } from './input-ref.directive';
 
 @Component({
 	selector: 'app-custom-input',
@@ -14,26 +14,24 @@ export class CustomInputComponent implements OnInit {
 	@ContentChild(InputRefDirective, { static: true })
 	input: InputRefDirective;
 
-	ngOnInit() {
-		console.log(this.input);
-	}
 	get isError() {
 		return this.input.hasError;
-	}
-
-	get isRequired() {
-		return this.input.isRequired;
 	}
 
 	get isDisabled() {
 		return this.input.isDisabled;
 	}
 
+	get isRequired() {
+		return this.input.isRequired;
+	}
+
 	get errorMessages() {
 		if (!this.validations) {
 			return '';
 		}
-		const { errors } = this.input;
+		const errors = this.input.errors;
+		console.log(errors);
 		const messages = [];
 		const keys = Object.keys(this.validations);
 
@@ -44,4 +42,10 @@ export class CustomInputComponent implements OnInit {
 		});
 		return messages;
 	}
+
+	ngOnInit() {
+		console.log(this.input);
+	}
+
+	constructor() {}
 }

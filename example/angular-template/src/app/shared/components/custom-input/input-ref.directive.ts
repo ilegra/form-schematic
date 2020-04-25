@@ -1,11 +1,23 @@
-import { Directive, HostBinding } from '@angular/core';
+import { Directive, TemplateRef, HostBinding } from '@angular/core';
 import { NgControl, AbstractControl } from '@angular/forms';
+
+// Here we cann change the class valid and invalid
+enum controlStatusClassEnum {
+	VALID = 'class.is-valid',
+	INVALID = 'class.is-invalid'
+}
 
 @Directive({
 	selector: '[appInputRef]'
 })
 export class InputRefDirective {
-	constructor(private formControl: NgControl) {}
+	constructor(private formControl: NgControl) {
+		console.log(this.formControl.validator);
+	}
+
+	get isDisabled(): boolean {
+		return this.formControl.control.disabled;
+	}
 
 	get hasError() {
 		return this.formControl.dirty && this.formControl.invalid;
@@ -33,15 +45,19 @@ export class InputRefDirective {
 		return false;
 	}
 
-	get isDisabled(): boolean {
-		return this.formControl.control.disabled;
+	@HostBinding('class.is-valid')
+	get StatusValid() {
+		if (this.formControl.control == null) {
+			return false;
+		}
+		return this.formControl.control.valid && this.formControl.touched;
 	}
 
-	@HostBinding('class.invalid-field')
+	@HostBinding('class.is-invalid')
 	get StatusInvalid() {
 		if (this.formControl.control == null) {
 			return false;
 		}
-		return this.formControl.control.invalid && this.formControl.dirty;
+		return this.formControl.control.invalid && this.formControl.touched;
 	}
 }
