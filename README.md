@@ -90,6 +90,16 @@ will stay:
 }
 ```
 
+## Necessary imports
+
+```
+    ReactiveFormsModule,
+    FormsModule,
+    NgxMaskModule.forRoot({
+        validation: true
+    })
+```
+
 ## Backlog
 
 -   [x] Support input elements
