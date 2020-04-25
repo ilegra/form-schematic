@@ -1,6 +1,6 @@
 {
 	"type": "object",
-	"title": "Informações Pessoais",
+	"title": "Personal Informations",
 	"properties": {
 		"name": {
 			"title": "Name",

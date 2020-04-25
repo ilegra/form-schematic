@@ -100,6 +100,10 @@ will stay:
     })
 ```
 
+## Output Example
+
+![Output](output/output.png)
+
 ## Backlog
 
 -   [x] Support input elements

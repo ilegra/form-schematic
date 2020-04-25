@@ -1,6 +1,6 @@
 {
 	"type": "object",
-	"title": "Informações para pagamento de salário",
+	"title": "Payment Informations",
 	"properties": {
 		"bankName": {
 			"title": "Bank Name",
