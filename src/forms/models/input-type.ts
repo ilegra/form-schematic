@@ -1,3 +1,5 @@
+import { SelectOption } from "./select-option.model";
+
 export interface InputTypeInterface {
 	title: string;
 	type: string;
@@ -9,6 +11,11 @@ export interface InputTypeInterface {
 	min?: number;
 	inputType?: string;
 	mask?: string;
+	elementType?: string;
+	options?: SelectOption[];
+	disabled?: boolean;
+	readOnly?: boolean;
+	customClass?: string;
 }
 
 const inputTypeMapper: any = {
@@ -27,6 +34,11 @@ export class InputType {
 	public min?: number;
 	public mask?: string;
 	public inputType?: string;
+	public elementType?: string;
+	public options?: SelectOption[];
+	public disabled?: boolean;
+	public readOnly?: boolean;
+	public customClass?: string;
 
 	constructor(data: InputTypeInterface) {
 		this.label = data.title;
@@ -39,6 +51,11 @@ export class InputType {
 		this.min = data.min;
 		this.mask = data.mask;
 		this.inputType = data.inputType || this.getTypeInput(this.type);
+		this.elementType = data.elementType || 'input';
+		this.options = data.options;
+		this.disabled = data.disabled;
+		this.readOnly = data.readOnly;
+		this.customClass = data.customClass;
 	}
 
 	getTypeInput(type: string): string {
