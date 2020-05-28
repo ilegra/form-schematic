@@ -20,7 +20,7 @@ export class <%= classify(name) %>FormComponent implements OnInit {
 
   private initializeForm() {
      return this.fb.group({<% for(let prop of formJsonObj.properties) { %>
-       <%= prop.key %>: [null<% if (formJsonObj.required.includes(prop.key)) { %>, [Validators.required] <% } %>], <% } %>
+       <%= prop.key %>: [<% if (prop.disabled) { %>{ value: '', disabled: true }<% } else { %>null<% } %><% if (formJsonObj.required.includes(prop.key)) { %>, [Validators.required] <% } %>], <% } %>
      })
   }
 

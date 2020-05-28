@@ -4,14 +4,14 @@
     [formGroup]="this.<%= camelize(name) %>Form"
     name="<%= dasherize(name + 'Form') %>"
   >
-    <div class="row"><% for(let prop of formJsonObj.properties) { %>
+    <div class="row align-items-end"><% for(let prop of formJsonObj.properties) { %>
       <div class="col-6">
-        <app-custom-input label="<%= prop.label %>">
+        <app-custom-input label="<%= prop.label %>"><% if(prop.elementType === 'input') { %>
           <input
             formControlName="<%= prop.key %>"
             name="<%= dasherize(prop.key) %>"
             type="<%= prop.inputType %>"
-            class="form-control"
+            class="form-control<% if (prop.customClass) { %> <%= prop.customClass %><% } %>"
             id="<%= dasherize('input-' + prop.key) %>"<% if(prop.pattern) { %> 
             pattern="<%= prop.pattern%>"<% } %><% if(prop.maxLength || prop.maxLength === 0) { %> 
             maxLength="<%= prop.maxLength %>"<% } %><% if(prop.minLength || prop.minLength === 0) { %> 
@@ -19,8 +19,32 @@
             min="<%= prop.min%>"<% } %><% if(prop.max || prop.max === 0) { %> 
             max="<%= prop.max%>"<% } %><% if(prop.mask) { %> 
             mask="<%= prop.mask%>"<% } %>
+            <%= prop.disabled ? 'disabled' : '' %>
+            <%= prop.readOnly ? 'readonly' : '' %>
             appInputRef
           />
+          <% } else if (prop.elementType === 'textarea') { %><textarea
+            formControlName="<%= prop.key %>"
+            name="<%= dasherize(prop.key) %>"
+            class="form-control<% if (prop.customClass) { %> <%= prop.customClass %><% } %>"
+            id="<%= dasherize('input-' + prop.key) %>"<% if(prop.maxLength || prop.maxLength === 0) { %> 
+            maxLength="<%= prop.maxLength %>"<% } %><% if(prop.minLength || prop.minLength === 0) { %> 
+            minLength="<%= prop.minLength%>"<% } %><% if(prop.mask) { %> 
+            mask="<%= prop.mask%>"<% } %>
+            <%= prop.disabled ? 'disabled' : '' %>
+            <%= prop.readOnly ? 'readonly' : '' %>
+            appInputRef
+          ></textarea><% } else if (prop.elementType === 'select') { %><select
+              name="<%= dasherize(prop.key) %>"
+              formControlName="<%= prop.key %>"
+              class="form-control<% if (prop.customClass) { %> <%= prop.customClass %><% } %>"
+              <%= prop.disabled ? 'disabled' : '' %>
+              <%= prop.readOnly ? 'readonly' : '' %>
+              appInputRef>
+            <option selected>Selecione uma opção</option>
+            <% for (let option of prop.options) { %>
+            <option value="<%= option.key %>"><%= option.value %></option><% } %>
+          </select><% } %>
         </app-custom-input>
       </div>
       <% } %>

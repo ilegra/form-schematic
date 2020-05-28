@@ -1,0 +1,45 @@
+{
+	"type": "object",
+	"title": "Address",
+	"properties": {
+    "id": {
+      "title": "ID",
+      "type": "number",
+      "elementType": "input",
+      "disabled": true
+    },
+    "createdAt": {
+      "title": "Created At",
+      "type": "string",
+      "elementType": "input",
+      "readOnly": true
+    },
+		"firstName": {
+			"title": "First Name",
+      "type": "string",
+      "elementType": "input",
+      "customClass": "custom-class"
+		},
+    "bio": {
+      "title": "Bio",
+      "type": "string",
+      "elementType": "textarea"
+    },
+    "salutation": {
+      "title": "Salutation",
+      "elementType": "select",
+      "type": "string",
+      "options": [
+        {
+          "key": "ms",
+          "value": "Ms."
+        },
+        {
+          "key": "mr",
+          "value": "Mr."
+        }
+      ]
+    }
+	},
+	"required": ["firstName", "bio"]
+}
