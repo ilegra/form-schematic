@@ -3,18 +3,17 @@
 	"title": "Payment Informations",
 	"properties": {
 		"bankName": {
-			"title": "Bank Name",
-			"type": "string"
+			"label": "Bank Name",
+			"inputType": "text"
 		},
 		"bankAccount": {
-			"title": "Bank Account",
-			"type": "string",
+			"label": "Bank Account",
+			"inputType": "text",
 			"maxLength": 15
 		},
 		"digit": {
-			"title": "Digit",
-			"type": "string",
-			"inputType": "digit",
+			"label": "Digit",
+			"inputType": "number",
 			"maxLength": 1
 		}
 	},

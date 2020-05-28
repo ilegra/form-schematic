@@ -3,32 +3,33 @@
 	"title": "Address",
 	"properties": {
     "id": {
-      "title": "ID",
-      "type": "number",
+      "label": "ID",
+      "inputType": "text",
       "elementType": "input",
       "disabled": true
     },
     "createdAt": {
-      "title": "Created At",
-      "type": "string",
+      "label": "Created At",
+      "inputType": "text",
       "elementType": "input",
       "readOnly": true
     },
 		"firstName": {
-			"title": "First Name",
-      "type": "string",
+			"label": "First Name",
+      "inputType": "text",
       "elementType": "input",
+      "mask": "aaa",
       "customClass": "custom-class"
 		},
     "bio": {
-      "title": "Bio",
-      "type": "string",
+      "label": "Bio",
+      "inputType": "text",
       "elementType": "textarea"
     },
     "salutation": {
-      "title": "Salutation",
+      "label": "Salutation",
       "elementType": "select",
-      "type": "string",
+      "inputType": "text",
       "options": [
         {
           "key": "ms",

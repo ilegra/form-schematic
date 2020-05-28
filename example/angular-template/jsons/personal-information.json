@@ -3,39 +3,37 @@
 	"title": "Personal Informations",
 	"properties": {
 		"name": {
-			"title": "Name",
-			"type": "string",
+      "label": "Name",
+      "inputType": "text",
 			"maxLength": 80
 		},
 		"password": {
-			"title": "Password",
-			"type": "string",
+			"label": "Password",
 			"inputType": "password",
 			"minLength": 6
 		},
 		"email": {
-			"title": "Email",
-			"type": "string",
+      "label": "Email",
+      "inputType": "email",
 			"pattern": "^\\S+@\\S+$"
 		},
 		"age": {
-			"title": "Age",
-			"type": "number",
+			"label": "Age",
 			"min": 0,
-			"max": 120
+      "max": 120,
+      "inputType": "number"
 		},
 		"nationality": {
-			"title": "Nationality",
-			"type": "string"
+			"label": "Nationality",
+			"inputType": "text"
 		},
 		"cpf": {
-			"title": "CPF",
-			"type": "string",
+			"label": "CPF",
+			"inputType": "text",
 			"mask": "000.000.000-00"
 		},
 		"phoneNumber": {
-			"title": "Phone Number",
-			"type": "string",
+			"label": "Phone Number",
 			"mask": "(00) 00000-0000",
 			"inputType": "tel"
 		}

@@ -3,25 +3,25 @@
 	"title": "Address",
 	"properties": {
 		"street": {
-			"title": "Street",
-			"type": "string"
+			"label": "Street",
+			"inputType": "text"
 		},
 		"district": {
-			"title": "District",
-			"type": "string",
+			"label": "District",
+			"inputType": "text",
 			"maxLength": 15
 		},
 		"numberStr": {
-			"title": "Number",
-			"type": "number"
+			"label": "Number",
+			"inputType": "number"
 		},
 		"city": {
-			"title": "City",
-			"type": "string"
+			"label": "City",
+			"inputType": "text"
 		},
 		"zipCode": {
-			"title": "Zip Code",
-			"type": "string",
+			"label": "Zip Code",
+			"inputType": "text",
 			"mask": "00.000-000"
 		}
 	},
