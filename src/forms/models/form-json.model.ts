@@ -1,4 +1,13 @@
-import { InputType } from './input-type';
+import { InputField, getInput } from './form-fields/input.model';
+import { Select, getSelect } from './form-fields/select.model';
+import { Textarea, getTextArea } from './form-fields/textarea.model';
+
+type FormField = InputField | Select | Textarea;
+enum FormFieldTypes {
+	INPUT = 'input',
+	SELECT = 'select',
+	TEXT_AREA = 'textarea'
+}
 
 export interface FormJsonInterface {
 	type: string;
@@ -12,7 +21,8 @@ export class FormJson {
 	public type: string;
 	public title: string;
 	public description: string;
-	public properties: InputType[];
+	// Array with formElements inputs, selects, textarea ...
+	public properties: FormField[];
 	public required: string[];
 
 	constructor(data: FormJsonInterface) {
@@ -23,9 +33,25 @@ export class FormJson {
 		this.required = data.required;
 	}
 
-	getPropertiesInArray(propertiesObj: any): InputType[] {
+	// Method to return a FormField array
+	getPropertiesInArray(propertiesObj: any): FormField[] {
 		return Object.keys(propertiesObj).map(key => {
-			return new InputType({ ...propertiesObj[key], key });
+			const elementType = propertiesObj[key].elementType || FormFieldTypes.INPUT;
+
+			switch (elementType) {
+				case FormFieldTypes.INPUT:
+					return getInput({ key, ...propertiesObj[key] })
+					break;
+				case FormFieldTypes.SELECT:
+					return getSelect({ key, ...propertiesObj[key] })
+					break;
+				case FormFieldTypes.TEXT_AREA:
+					return getTextArea({ key, ...propertiesObj[key] })
+					break;
+				default:
+					throw Error('Invalid property error ' + elementType);
+					break;
+			}
 		});
 	}
 }
