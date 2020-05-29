@@ -29,18 +29,18 @@ type Input = {
     // Could be text, number, email....
     inputType: string;
     pattern?: string;
-	maxLength?: number;
-	minLength?: number;
-	max?: number;
-	min?: number;
-	mask?: string;
+    maxLength?: number;
+    minLength?: number;
+    max?: number;
+    min?: number;
+    mask?: string;
 }
 
 export type InputField = Input & Field;
 
 export const getInput = (obj: InputField): InputField => {
-    const interfaceValueType = obj.interfaceValueType ||  inputTypeMapper[obj.inputType] || inputTypeMapper.text;
-    
+    const interfaceValueType = obj.interfaceValueType || inputTypeMapper[obj.inputType] || inputTypeMapper.text;
+
     const inputField: InputField = {
         label: obj.label,
         elementType: 'input',
