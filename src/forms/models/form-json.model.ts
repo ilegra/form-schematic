@@ -1,12 +1,18 @@
-import { InputField, getInput } from './form-fields/input.model';
-import { Select, getSelect } from './form-fields/select.model';
-import { Textarea, getTextArea } from './form-fields/textarea.model';
+import { getCheckbox } from './form-fields/checkbox.model';
+import { getDatePicker } from './form-fields/date-picker.model';
+import { getInput } from './form-fields/input.model';
+import { getRadio } from './form-fields/radio.model';
+import { getSelect } from './form-fields/select.model';
+import { getTextArea } from './form-fields/textarea.model';
+import { FormField } from './form-fields/field';
 
-type FormField = InputField | Select | Textarea;
 enum FormFieldTypes {
 	INPUT = 'input',
 	SELECT = 'select',
-	TEXT_AREA = 'textarea'
+	TEXT_AREA = 'textarea',
+	DATE = 'date-picker',
+	RADIO = 'radio',
+	CHECKBOX = 'checkbox'
 }
 
 export interface FormJsonInterface {
@@ -37,20 +43,22 @@ export class FormJson {
 	getPropertiesInArray(propertiesObj: any): FormField[] {
 		return Object.keys(propertiesObj).map(key => {
 			const elementType = propertiesObj[key].elementType || FormFieldTypes.INPUT;
-
+			// @TODO transform this in a factory method
 			switch (elementType) {
+				case FormFieldTypes.DATE:
+					return getDatePicker({ key, ...propertiesObj[key] })
 				case FormFieldTypes.INPUT:
 					return getInput({ key, ...propertiesObj[key] })
-					break;
+				case FormFieldTypes.RADIO:
+					return getRadio({ key, ...propertiesObj[key] })
+				case FormFieldTypes.CHECKBOX:
+					return getCheckbox({ key, ...propertiesObj[key] })
 				case FormFieldTypes.SELECT:
 					return getSelect({ key, ...propertiesObj[key] })
-					break;
 				case FormFieldTypes.TEXT_AREA:
 					return getTextArea({ key, ...propertiesObj[key] })
-					break;
 				default:
 					throw Error('Invalid property error ' + elementType);
-					break;
 			}
 		});
 	}

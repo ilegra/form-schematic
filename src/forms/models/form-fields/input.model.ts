@@ -1,4 +1,6 @@
 import Field from './field';
+import { renderInput } from '../../render-strategy/render-input';
+import { i18nString } from '../18n-type';
 
 // This mapper is used to discovery the interface value, for now is everything string but we can change if we need
 const inputTypeMapper = {
@@ -34,6 +36,7 @@ type Input = {
     max?: number;
     min?: number;
     mask?: string;
+    placeholder?: i18nString | string;
 }
 
 export type InputField = Input & Field;
@@ -48,8 +51,22 @@ export const getInput = (obj: InputField): InputField => {
         interfaceValueType,
         customClass: obj.customClass || 'form-control',
         disabled: obj.disabled || false,
+        isRequired: obj.isRequired || false,
         readOnly: obj.readOnly || false,
-        inputType: obj.inputType
+        inputType: obj.inputType,
+        renderFormField: renderInput
+    }
+
+    if (!!obj.tooltip) {
+        inputField['tooltip'] = obj.tooltip;
+    }
+
+    if (!!obj.placeholder) {
+        inputField['placeholder'] = obj.placeholder;
+    }
+
+    if (!!obj.initialValue) {
+        inputField['initialValue'] = obj.initialValue;
     }
 
     if (!!obj.pattern) {
