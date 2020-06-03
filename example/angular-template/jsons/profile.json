@@ -1,35 +1,58 @@
 {
-	"type": "object",
-	"title": "Address",
-	"properties": {
+  "type": "object",
+  "title": "Address",
+  "properties": {
     "id": {
-      "label": "ID",
+      "label": {
+        "key": "ProjectName.Example.Profile.ID.Label"
+      },
       "inputType": "text",
       "elementType": "input",
-      "disabled": true
+      "disabled": true,
+      "initialValue": "1"
     },
     "createdAt": {
-      "label": "Created At",
-      "inputType": "text",
-      "elementType": "input",
-      "readOnly": true
+      "label": {
+        "key": "ProjectName.Example.Profile.CreatedAt.Label"
+      },
+      "inputType": "date",
+      "elementType": "date-picker"
     },
-		"firstName": {
-			"label": "First Name",
+    "finishedAt": {
+      "label": {
+        "key": "ProjectName.Example.Profile.FinishedAt.Label"
+      },
+      "inputType": "date",
+      "elementType": "date-picker"
+    },
+    "firstName": {
+      "label": {
+        "key": "ProjectName.Example.Profile.FirstName.Label"
+      },
       "inputType": "text",
       "elementType": "input",
-      "mask": "aaa",
-      "customClass": "custom-class"
-		},
-    "bio": {
-      "label": "Bio",
+      "initialValue": "Juan",
+      "isRequired": true,
+      "placeholder":  {
+        "key": "ProjectName.Example.Profile.FirstName.Placeholder"
+      }
+    },
+    "cpf": {
+      "label": {
+        "key": "ProjectName.Example.Profile.CPF.Label"
+      },
       "inputType": "text",
-      "elementType": "textarea"
+      "mask": "000.000.000-00"
     },
     "salutation": {
-      "label": "Salutation",
+      "label": {
+        "key": "ProjectName.Example.Profile.Salutation.Label"
+      },
       "elementType": "select",
       "inputType": "text",
+      "defaultValueOption":{
+        "key": "ProjectName.Example.Profile.Salutation.defaultValueOption"
+      },
       "options": [
         {
           "key": "ms",
@@ -40,7 +63,51 @@
           "value": "Mr."
         }
       ]
+    },
+    "skills": {
+      "label": {
+        "key": "ProjectName.Example.Profile.Skills.Label"
+      },
+      "elementType": "checkbox",
+      "inputType": "text",
+      "options": [
+        {
+          "label": "JS",
+          "selected": true
+        },
+        {
+          "label": "CSS",
+          "selected": false
+        }
+      ]
+    },
+    "saveScheduleSettings": {
+      "label": {
+        "key": "ProjectName.Example.Profile.Schedule.Label"
+      },
+      "elementType": "radio",
+      "inputType": "text",
+      "options": [
+        {
+          "value": "yes",
+          "label": "Yes"
+        },
+        {
+          "value": "no",
+          "label": "No"
+        }
+      ]
+    },
+    "bio": {
+      "label": {
+        "key": "ProjectName.Example.Profile.Bio.Label"
+      },
+      "tooltip": {
+        "key": "ProjectName.Example.Profile.Bio.Tooltip"
+      },
+      "inputType": "text",
+      "elementType": "textarea",
+      "isRequired": true
     }
-	},
-	"required": ["firstName", "bio"]
+  }
 }

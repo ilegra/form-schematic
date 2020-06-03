@@ -16,6 +16,5 @@
 			"inputType": "number",
 			"maxLength": 1
 		}
-	},
-	"required": ["bankName", "bankAccount", "digit", "country"]
+	}
 }

@@ -24,6 +24,5 @@
 			"inputType": "text",
 			"mask": "00.000-000"
 		}
-	},
-	"required": ["street", "numberStr", "city", "zipCode"]
+	}
 }
