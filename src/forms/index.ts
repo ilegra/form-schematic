@@ -110,6 +110,12 @@ function addTreeModulesToModule(options: any) {
 			'FormsModule',
 			'@angular/forms'
 		);
+		addModuleImportToModule(
+			host,
+			modulePath,
+			'NgbModule',
+			'@ng-bootstrap/ng-bootstrap'
+		);
 
 		return host;
 	};
