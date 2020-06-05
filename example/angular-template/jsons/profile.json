@@ -1,44 +1,32 @@
 {
   "type": "object",
-  "title": "Address",
+  "title": "Profile",
   "properties": {
     "id": {
-      "label": {
-        "key": "ProjectName.Example.Profile.ID.Label"
-      },
+      "label": "ID",
       "inputType": "text",
       "elementType": "input",
       "disabled": true,
       "initialValue": "1"
     },
     "firstName": {
-      "label": {
-        "key": "ProjectName.Example.Profile.FirstName.Label"
-      },
+      "label": "First name",
       "inputType": "text",
       "elementType": "input",
       "initialValue": "Juan",
       "isRequired": true,
-      "placeholder":  {
-        "key": "ProjectName.Example.Profile.FirstName.Placeholder"
-      }
+      "placeholder":  "Type your name here"
     },
     "cpf": {
-      "label": {
-        "key": "ProjectName.Example.Profile.CPF.Label"
-      },
+      "label": "CPF",
       "inputType": "text",
       "mask": "000.000.000-00"
     },
     "salutation": {
-      "label": {
-        "key": "ProjectName.Example.Profile.Salutation.Label"
-      },
+      "label": "Salutation",
       "elementType": "select",
       "inputType": "text",
-      "defaultValueOption":{
-        "key": "ProjectName.Example.Profile.Salutation.defaultValueOption"
-      },
+      "defaultValueOption": "Select an option",
       "options": [
         {
           "key": "ms",
@@ -51,9 +39,7 @@
       ]
     },
     "skills": {
-      "label": {
-        "key": "ProjectName.Example.Profile.Skills.Label"
-      },
+      "label": "Skills",
       "elementType": "checkbox",
       "inputType": "text",
       "options": [
@@ -68,9 +54,7 @@
       ]
     },
     "saveScheduleSettings": {
-      "label": {
-        "key": "ProjectName.Example.Profile.Schedule.Label"
-      },
+      "label": "Schedule",
       "elementType": "radio",
       "inputType": "text",
       "options": [
@@ -85,12 +69,8 @@
       ]
     },
     "bio": {
-      "label": {
-        "key": "ProjectName.Example.Profile.Bio.Label"
-      },
-      "tooltip": {
-        "key": "ProjectName.Example.Profile.Bio.Tooltip"
-      },
+      "label": "Bio",
+      "tooltip": "Type about you here",
       "inputType": "text",
       "elementType": "textarea",
       "isRequired": true
