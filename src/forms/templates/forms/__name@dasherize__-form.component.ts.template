@@ -54,6 +54,7 @@ export class <%= classify(name) %>FormComponent implements OnInit {
     })
   }
   <% }} %>
+  
   onSubmit() {
     console.log(this.getFormValue());
     alert('form submitted');

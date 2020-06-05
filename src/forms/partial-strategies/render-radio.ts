@@ -5,18 +5,18 @@ export const renderRadio = (prop: RadioField) => {
     return `
         <div class="col-6">
             <div class="form-group"> 
-                <label for="${prop.key}">
+                <p for="${prop.key}">
                     ${prop.label}
-                </label>${getTooltip(prop)}
-                <label class="display-block" *ngFor="let option of ${prop.key}Options">
+                </p>${getTooltip(prop)}
+                <div class="form-check form-check-inline"  *ngFor="let option of ${prop.key}Options">
                     <input
                         formControlName="${prop.key}"
                         name="${prop.key}"
                         [value]="option.value"
                         type="radio"
                     /> 
-                    {{ option.label }}
-                </label>
+                    <label class="form-check-label" for="${prop.key}">{{ option.label }} </label>
+                </div>
             </div>
         </div>`
 

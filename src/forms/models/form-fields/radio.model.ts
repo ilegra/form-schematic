@@ -16,7 +16,7 @@ export const getRadio = (obj: RadioField): RadioField => {
         key: obj.key,
         options: obj.options || [],
         isRequired: obj.isRequired || false,
-        customClass: obj.customClass || 'form-control',
+        customClass: obj.customClass || 'form-check-input',
         disabled: obj.disabled || false,
         readOnly: obj.readOnly || false,
         renderFormField: renderRadio
