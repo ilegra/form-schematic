@@ -1,11 +1,10 @@
 import Field from './field';
 import { Option } from './option.model';
-import { renderSelect } from '../../render-strategy/render-select';
-import { i18nString } from '../18n-type';
+import { renderSelect } from '../../partial-strategies/render-select';
 
 type Select = {
     options?: Option[];
-    defaultValueOption: i18nString | string;
+    defaultValueOption: string;
 }
 
 export type SelectField = Select & Field;

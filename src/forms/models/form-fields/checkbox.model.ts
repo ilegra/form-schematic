@@ -1,6 +1,6 @@
 import Field from "./field";
 import { CheckboxOption } from "./checkbox-option.model";
-import { renderCheckbox } from "../../render-strategy/render-checkbox";
+import { renderCheckbox } from "../../partial-strategies/render-checkbox";
 
 type Checkbox = {
     options?: CheckboxOption[];
@@ -16,7 +16,7 @@ export const getCheckbox = (obj: CheckboxField): CheckboxField => {
         key: obj.key,
         isRequired: obj.isRequired || false,
         options: obj.options || [],
-        customClass: obj.customClass || 'form-control',
+        customClass: obj.customClass || 'form-check-input',
         disabled: obj.disabled || false,
         readOnly: obj.readOnly || false,
         renderFormField: renderCheckbox

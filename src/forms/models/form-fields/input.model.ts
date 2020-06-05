@@ -1,6 +1,5 @@
 import Field from './field';
-import { renderInput } from '../../render-strategy/render-input';
-import { i18nString } from '../18n-type';
+import { renderInput } from '../../partial-strategies/render-input';
 
 // This mapper is used to discovery the interface value, for now is everything string but we can change if we need
 const inputTypeMapper = {
@@ -36,7 +35,7 @@ type Input = {
     max?: number;
     min?: number;
     mask?: string;
-    placeholder?: i18nString | string;
+    placeholder?: string;
 }
 
 export type InputField = Input & Field;

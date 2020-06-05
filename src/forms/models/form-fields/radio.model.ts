@@ -1,6 +1,6 @@
 import Field from "./field";
 import { Option } from "./option.model";
-import { renderRadio } from "../../render-strategy/render-radio";
+import { renderRadio } from "../../partial-strategies/render-radio";
 
 type Radio = {
     options?: Option[];

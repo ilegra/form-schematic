@@ -1,5 +1,4 @@
 import { getCheckbox } from './form-fields/checkbox.model';
-import { getDatePicker } from './form-fields/date-picker.model';
 import { getInput } from './form-fields/input.model';
 import { getRadio } from './form-fields/radio.model';
 import { getSelect } from './form-fields/select.model';
@@ -45,8 +44,6 @@ export class FormJson {
 			const elementType = propertiesObj[key].elementType || FormFieldTypes.INPUT;
 			// @TODO transform this in a factory method
 			switch (elementType) {
-				case FormFieldTypes.DATE:
-					return getDatePicker({ key, ...propertiesObj[key] })
 				case FormFieldTypes.INPUT:
 					return getInput({ key, ...propertiesObj[key] })
 				case FormFieldTypes.RADIO:

@@ -1,59 +1,10 @@
-<app-section title="<%= formJsonObj.title %>">
-  <form
-    class="form"
-    [formGroup]="this.<%= camelize(name) %>Form"
-    name="<%= dasherize(name + 'Form') %>"
-  >
-    <div class="row align-items-end"><% for(let prop of formJsonObj.properties) { %>
-      <div class="col-6">
-        <app-custom-input label="<%= prop.label %>"><% if(prop.elementType === 'input') { %>
-          <input
-            formControlName="<%= prop.key %>"
-            name="<%= dasherize(prop.key) %>"
-            type="<%= prop.inputType %>"
-            class="form-control<% if (prop.customClass) { %> <%= prop.customClass %><% } %>"
-            id="<%= dasherize('input-' + prop.key) %>"<% if(prop.pattern) { %> 
-            pattern="<%= prop.pattern%>"<% } %><% if(prop.maxLength || prop.maxLength === 0) { %> 
-            maxLength="<%= prop.maxLength %>"<% } %><% if(prop.minLength || prop.minLength === 0) { %> 
-            minLength="<%= prop.minLength %>"<% } %><% if(prop.min || prop.min === 0) { %> 
-            min="<%= prop.min%>"<% } %><% if(prop.max || prop.max === 0) { %> 
-            max="<%= prop.max%>"<% } %><% if(prop.mask) { %> 
-            mask="<%= prop.mask%>"<% } %><%= 
-            prop.disabled ? '[disabled]="true"' : '' %><%= 
-            prop.readOnly ? '[readonly]="true"' : '' %>
-            appInputRef
-          />
-          <% } else if (prop.elementType === 'textarea') { %>
-        <textarea
-            formControlName="<%= prop.key %>"
-            name="<%= dasherize(prop.key) %>"
-            class="form-control<% if (prop.customClass) { %> <%= prop.customClass %><% } %>"
-            id="<%= dasherize('input-' + prop.key) %>"<% if(prop.maxLength || prop.maxLength === 0) { %> 
-            maxLength="<%= prop.maxLength %>"<% } %><% if(prop.minLength || prop.minLength === 0) { %> 
-            minLength="<%= prop.minLength%>"<% } %><% if(prop.mask) { %> 
-            mask="<%= prop.mask%>"<% } %><%= 
-            prop.disabled ? '[disabled]="true"' : '' %><%= 
-            prop.readOnly ? '[readonly]="true"' : '' %>
-            appInputRef
-            rows="<%= prop.rows %>"
-            cols="<%= prop.columns %>"
-          ></textarea><% } else if (prop.elementType === 'select') { %>
-          <select
-              name="<%= dasherize(prop.key) %>"
-              formControlName="<%= prop.key %>"
-              class="<%= prop.customClass %>"<%= 
-              prop.disabled ? '[disabled]="true"' : '' %><%= 
-              prop.readOnly ? '[readonly]="true"' : '' %>
-              appInputRef>
-            <% if(prop.defaultValueOption) { %><option selected> <%= prop.defaultValueOption %> </option> <% } %>
-            <% for (let option of prop.options) { %><option value="<%= option.key %>"><%= option.value %></option>
-            <% } %>
-          </select><% }%>
-        </app-custom-input>
-      </div>
-      <% } %>
-    </div>
-    <div class="row">
+<form
+  [formGroup]="this.<%= camelize(name) %>Form"
+  name="<%= dasherize(name + 'Form') %>"
+>
+  <div class="row align-items-start"><% for(let prop of formJsonObj.properties) { %><%= prop.renderFormField(prop) %> <% } %>
+  </div>
+     <div class="row">
       <div class="col-6 d-flex justify-content-start w-25 p-3">
         <button
           type="reset"
@@ -78,4 +29,3 @@
       </div>
     </div>
   </form>
-</app-section>

@@ -11,20 +11,6 @@
       "disabled": true,
       "initialValue": "1"
     },
-    "createdAt": {
-      "label": {
-        "key": "ProjectName.Example.Profile.CreatedAt.Label"
-      },
-      "inputType": "date",
-      "elementType": "date-picker"
-    },
-    "finishedAt": {
-      "label": {
-        "key": "ProjectName.Example.Profile.FinishedAt.Label"
-      },
-      "inputType": "date",
-      "elementType": "date-picker"
-    },
     "firstName": {
       "label": {
         "key": "ProjectName.Example.Profile.FirstName.Label"

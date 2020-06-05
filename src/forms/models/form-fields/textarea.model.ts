@@ -1,5 +1,5 @@
 import Field from "./field";
-import { renderTextArea } from "../../render-strategy/render-textarea";
+import { renderTextArea } from "../../partial-strategies/render-textarea";
 
 type Textarea = {
     rows: number;
