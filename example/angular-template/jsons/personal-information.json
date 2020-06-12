@@ -3,25 +3,29 @@
 	"title": "Personal Informations",
 	"properties": {
 		"name": {
-      "label": "Name",
-      "inputType": "text",
-			"maxLength": 80
+			"label": "Name",
+			"inputType": "text",
+			"maxLength": 80,
+			"isRequired": true
 		},
 		"password": {
 			"label": "Password",
 			"inputType": "password",
-			"minLength": 6
+			"minLength": 6,
+			"isRequired": true
 		},
 		"email": {
-      "label": "Email",
-      "inputType": "email",
-			"pattern": "^\\S+@\\S+$"
+			"label": "Email",
+			"inputType": "email",
+			"pattern": "^\\S+@\\S+$",
+			"isRequired": true
 		},
 		"age": {
 			"label": "Age",
 			"min": 0,
-      "max": 120,
-      "inputType": "number"
+			"max": 120,
+			"inputType": "number",
+			"isRequired": true
 		},
 		"nationality": {
 			"label": "Nationality",
@@ -37,6 +41,5 @@
 			"mask": "(00) 00000-0000",
 			"inputType": "tel"
 		}
-	},
-	"required": ["name", "cpf", "password", "email", "age"]
+	}
 }

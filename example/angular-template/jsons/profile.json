@@ -1,35 +1,32 @@
 {
-	"type": "object",
-	"title": "Address",
-	"properties": {
+  "type": "object",
+  "title": "Profile",
+  "properties": {
     "id": {
       "label": "ID",
       "inputType": "text",
       "elementType": "input",
-      "disabled": true
+      "disabled": true,
+      "initialValue": "1"
     },
-    "createdAt": {
-      "label": "Created At",
+    "firstName": {
+      "label": "First name",
       "inputType": "text",
       "elementType": "input",
-      "readOnly": true
+      "initialValue": "Juan",
+      "isRequired": true,
+      "placeholder":  "Type your name here"
     },
-		"firstName": {
-			"label": "First Name",
+    "cpf": {
+      "label": "CPF",
       "inputType": "text",
-      "elementType": "input",
-      "mask": "aaa",
-      "customClass": "custom-class"
-		},
-    "bio": {
-      "label": "Bio",
-      "inputType": "text",
-      "elementType": "textarea"
+      "mask": "000.000.000-00"
     },
     "salutation": {
       "label": "Salutation",
       "elementType": "select",
       "inputType": "text",
+      "defaultValueOption": "Select an option",
       "options": [
         {
           "key": "ms",
@@ -40,7 +37,43 @@
           "value": "Mr."
         }
       ]
+    },
+    "skills": {
+      "label": "Skills",
+      "elementType": "checkbox",
+      "inputType": "text",
+      "options": [
+        {
+          "label": "JS",
+          "selected": true
+        },
+        {
+          "label": "CSS",
+          "selected": false
+        }
+      ]
+    },
+    "saveScheduleSettings": {
+      "label": "Schedule",
+      "elementType": "radio",
+      "inputType": "text",
+      "options": [
+        {
+          "value": "yes",
+          "label": "Yes"
+        },
+        {
+          "value": "no",
+          "label": "No"
+        }
+      ]
+    },
+    "bio": {
+      "label": "Bio",
+      "tooltip": "Type about you here",
+      "inputType": "text",
+      "elementType": "textarea",
+      "isRequired": true
     }
-	},
-	"required": ["firstName", "bio"]
+  }
 }

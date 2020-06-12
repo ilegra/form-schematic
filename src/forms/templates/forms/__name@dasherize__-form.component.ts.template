@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup<% if (formJsonObj.required.length > 0) { %>, Validators <% }%> } from '@angular/forms';
+import { FormBuilder, FormGroup<% if (formJsonObj.properties.some(value => !!value.isRequired)) { %>, Validators <% }%><% if(formJsonObj.properties.some(value => value.elementType === 'checkbox')) { %>, FormArray<% } %> } from '@angular/forms';
 import { <%= classify(name) %>Interface } from './<%= dasherize(name)%>.model';
 
 @Component({
@@ -10,8 +10,12 @@ import { <%= classify(name) %>Interface } from './<%= dasherize(name)%>.model';
   changeDetection: ChangeDetectionStrategy.<%= changeDetection %><% } %>
 })
 export class <%= classify(name) %>FormComponent implements OnInit {
-  public <%= camelize(name) %>Form: FormGroup;
-
+  public <%= camelize(name) %>Form: FormGroup;<% for(let prop of formJsonObj.properties) { %><%  if (prop.elementType === 'radio' ||  prop.elementType === 'select') { %>
+  <%= prop.key %>Options = <%= JSON.stringify(prop.options) %><% } %><% } %><% for(let prop of formJsonObj.properties) { %><%  
+  if (prop.elementType === 'checkbox') { %>
+  <%= prop.key %>Checkboxes = <%= JSON.stringify(prop.options) %>
+  is<%= classify(prop.key) %>CheckboxAll = false;<% } %><% } %>
+  
   constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
@@ -19,11 +23,38 @@ export class <%= classify(name) %>FormComponent implements OnInit {
   }
 
   private initializeForm() {
-     return this.fb.group({<% for(let prop of formJsonObj.properties) { %>
-       <%= prop.key %>: [<% if (prop.disabled) { %>{ value: '', disabled: true }<% } else { %>null<% } %><% if (formJsonObj.required.includes(prop.key)) { %>, [Validators.required] <% } %>], <% } %>
+     return this.fb.group({<% for(let prop of formJsonObj.properties) { 
+       if (prop.elementType === 'checkbox') {%>
+       <%= prop.key %>:  this.build<%= prop.key %>Checkboxes(),<% } else {%>
+       <%= prop.key %>: [<% if (prop.disabled) { %>
+       { value: <% if (prop.initialValue) { %> "<%= prop.initialValue %>"<% } %>, disabled: true } <% } else {
+          %><% if (prop.initialValue) { %> 
+          "<%= prop.initialValue %>"<% } else { %> null <% } %><% } %><% if (prop.isRequired) { %>, [Validators.required] <% } %>], <% }} %>
      })
   }
+  <% for(let prop of formJsonObj.properties) { %><% 
+    if (prop.elementType === 'checkbox') { %>
+  build<%= prop.key %>Checkboxes() {
+    const arr = this.<%= prop.key %>Checkboxes.map(value => {
+      return this.fb.control(value.selected);
+    })
 
+    return this.fb.array(arr);
+  }
+
+  get <%= camelize(prop.key) %>Controls() {
+    return this.<%= camelize(name) %>Form.get('<%= prop.key %>') as FormArray;
+  };
+
+  toggleAll<%= classify(prop.key) %>() {
+    this.is<%= classify(prop.key) %>CheckboxAll = !this.is<%= classify(prop.key) %>CheckboxAll;
+
+    this.<%= camelize(prop.key) %>Controls.controls.forEach(control => {
+      control.setValue(this.is<%= classify(prop.key) %>CheckboxAll)
+    })
+  }
+  <% }} %>
+  
   onSubmit() {
     console.log(this.getFormValue());
     alert('form submitted');
